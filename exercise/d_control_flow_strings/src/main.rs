@@ -17,6 +17,13 @@ fn main() {
         // 1a. Your task: handle the command-line arguments!
         //
         // - If arg is "sum", then call the sum() function
+        if arg == "sum" {
+            sum()
+        } else if arg == "double" {
+            double()
+        } else {
+            count(arg)
+        }
         // - If arg is "double", then call the double() function
         // - If arg is anything else, then call the count() function, passing "arg" to it.
 
@@ -32,6 +39,9 @@ fn sum() {
     // and add them all together (increment the `sum` variable).  Hint: You should get 255
     // Run it with `cargo run sum`
 
+    for num in 7..=23 {
+        sum = sum + num
+    }
 
     println!("The sum is {}", sum);
 }
@@ -43,16 +53,45 @@ fn double() {
     // by 2) until `x` is larger than 500.  Increment `count` each time through the loop. Run it
     // with `cargo run double`  Hint: The answer is 9 times.
 
-
+    // loop {
+    //     x = x * 2;
+    //     count = count + 1;
+    //     if x > 500 {break;}
+    // }
+    while x < 500 {
+        count += 1;
+        x *= 2;
+    }
     println!("You can double x {} times until x is larger than 500", count);
 }
 
 fn count(arg: String) {
     // Challenge: Use an unconditional loop (`loop`) to print `arg` 8 times, and then break.
     // You will need to count your loops, somehow.  Run it with `cargo run bananas`
-    //
-    // print!("{} ", arg); // Execute this line 8 times, and then break. `print!` doesn't add a newline.
 
+    // print!("{}", arg); // Execute this line 8 times, and then break. `print!` doesn't add a newline.
+    let mut count = 0;
+    loop {
+        print!("{}", arg);
+        count += 1;
+        if count == 8 { break;}
+    }
 
     println!(); // This will output just a newline at the end for cleanliness.
 }
+
+
+/*
+Strings
+
+&str borrow string slice cannot be modify ""
+String can be modify -----> "".to_string(); String::from("");
+
+Valid UTF-8
+&str ------------------ String
+
+pointer                 pointer
+length                  length
+                        capacity
+
+*/
